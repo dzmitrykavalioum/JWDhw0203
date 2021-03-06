@@ -10,7 +10,6 @@ public class Oven extends Appliance {
     private double width;
 
     public Oven() {
-
     }
 
     public Oven(int powerConsumption, double weight, double capacity, double depth, double height, double width, double price) {
@@ -21,6 +20,17 @@ public class Oven extends Appliance {
         this.depth = depth;
         this.height = height;
         this.width = width;
+
+    }
+
+    public Oven(OvenBuilder ovenBuilder) {
+        super(ovenBuilder.price);
+        this.powerConsumption = ovenBuilder.powerConsumption;
+        this.weight = ovenBuilder.weight;
+        this.capacity = ovenBuilder.capacity;
+        this.depth = ovenBuilder.depth;
+        this.height = ovenBuilder.height;
+        this.width = ovenBuilder.width;
 
     }
 
@@ -76,8 +86,36 @@ public class Oven extends Appliance {
     //Oven : POWER_CONSUMPTION=1000, WEIGHT=10, CAPACITY=32, DEPTH=60, HEIGHT=45.5, WIDTH=59.5
     @Override
     public String toString() {
-        return "Oven \t power consumption: " + powerConsumption + "\tweight: " + weight +
-                "\tcapacity: " + capacity + "\tdepth: " + depth + "\theight: " + height +
-                "\twidth: " + width + "\tprice: " + getPrice();
+        return "Oven \t power consumption: " + powerConsumption +
+                "\tweight: " + weight +
+                "\tcapacity: " + capacity +
+                "\tdepth: " + depth +
+                "\theight: " + height +
+                "\twidth: " + width +
+                "\tprice: " + getPrice();
+    }
+
+    public static class OvenBuilder {
+        public double capacity;
+        public double depth;
+        public double width;
+        public double height;
+        public double weight;
+        public int powerConsumption;
+        public double price;
+
+        public OvenBuilder(String[] allDescription) {
+            this.powerConsumption = Integer.parseInt(allDescription[1]);
+            this.weight = Double.parseDouble(allDescription[3]);
+            this.capacity = Double.parseDouble(allDescription[5]);
+            this.depth = Double.parseDouble(allDescription[7]);
+            this.height = Double.parseDouble(allDescription[9]);
+            this.width = Double.parseDouble(allDescription[11]);
+            this.price = Double.parseDouble(allDescription[13]);
+        }
+
+        public Oven build() {
+            return new Oven(this);
+        }
     }
 }

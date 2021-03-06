@@ -3,48 +3,47 @@ package com.dzmitrykavalioum.task01.main;
 import static com.dzmitrykavalioum.task01.entity.criteria.SearchCriteria.*;
 
 import com.dzmitrykavalioum.task01.entity.Appliance;
+import com.dzmitrykavalioum.task01.entity.Laptop;
+import com.dzmitrykavalioum.task01.entity.TabletPc;
 import com.dzmitrykavalioum.task01.entity.criteria.Criteria;
+import com.dzmitrykavalioum.task01.entity.criteria.SearchCriteria;
 import com.dzmitrykavalioum.task01.service.ApplianceService;
 import com.dzmitrykavalioum.task01.service.ServiceFactory;
 
+import java.io.IOException;
+
 public class Main {
 
-	public static void main(String[] args) {
-		Appliance appliance;
+    public static void main(String[] args) throws IOException {
 
-		ServiceFactory factory = ServiceFactory.getInstance();
-		ApplianceService service = factory.getApplianceService();
+        Appliance appliance;
+        ServiceFactory factory = ServiceFactory.getInstance();
+        ApplianceService applianceService = factory.getApplianceService();
+		Criteria criteriaOven = new Criteria(Oven.class.getSimpleName());
+		criteriaOven.add(Oven.CAPACITY.toString(), 33);
+		criteriaOven.add(Oven.HEIGHT.toString(), 40);
 
-		//////////////////////////////////////////////////////////////////
-
-		Criteria criteriaOven = new Criteria(Oven.class.getSimpleName());//"Oven"
-		criteriaOven.add(Oven.CAPACITY.toString(), 3);
-
-		appliance = service.find(criteriaOven);
-
+		appliance = applianceService.find(criteriaOven);
 		PrintApplianceInfo.print(appliance);
-
-		//////////////////////////////////////////////////////////////////
 
 		criteriaOven = new Criteria(Oven.class.getSimpleName());
-		criteriaOven.add(Oven.HEIGHT.toString(), 200);
-		criteriaOven.add(Oven.DEPTH.toString(), 300);
+		criteriaOven.add(Oven.HEIGHT.toString(), 45.5);
+		criteriaOven.add(Oven.WIDTH.toString(), 59.5);
 
-		appliance = service.find(criteriaOven);
-
+		appliance = applianceService.find(criteriaOven);
 		PrintApplianceInfo.print(appliance);
 
-		//////////////////////////////////////////////////////////////////
-		
-		Criteria criteriaTabletPC = new Criteria(TabletPC.class.getSimpleName());
-		criteriaTabletPC.add(TabletPC.COLOR.toString(), "BLUE");
-		criteriaTabletPC.add(TabletPC.DISPLAY_INCHES.toString(), 14);
-		criteriaTabletPC.add(TabletPC.MEMORY_ROM.toString(), 4);
+        Criteria criteriaLaptop = new Criteria(Laptop.class.getSimpleName());
+        criteriaLaptop.add(SearchCriteria.Laptop.OS.name(), "Windows");
+        appliance = applianceService.find(criteriaLaptop);
+        PrintApplianceInfo.print(appliance);
 
-		appliance = service.find(criteriaOven);// find(Object...obj)
+        Criteria criteriaTabletPc = new Criteria("TabletPC");
+        criteriaTabletPc.add(SearchCriteria.TabletPc.BATTERY_CAPACITY.name(), 4);
+        appliance = applianceService.find(criteriaTabletPc);
+        PrintApplianceInfo.print(appliance);
 
-		PrintApplianceInfo.print(appliance);
 
-	}
+    }
 
 }

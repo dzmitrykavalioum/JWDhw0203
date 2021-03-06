@@ -1,7 +1,7 @@
 package com.dzmitrykavalioum.task01.entity;
 
 public class VacuumCleaner extends Appliance {
-    private int powerConsumption = 100;
+    private int powerConsumption;
     private String filterType;
     private String bagType;
     private String wandType;
@@ -24,6 +24,16 @@ public class VacuumCleaner extends Appliance {
         this.motorSpeedRegulation = motorSpeedRegulation;
         this.cleaningWidth = cleaningWidth;
 
+    }
+
+    public VacuumCleaner(VacuumCleanerBuilder vacuumCleanerBuilder) {
+        super(vacuumCleanerBuilder.price);
+        this.powerConsumption = vacuumCleanerBuilder.powerConsumption;
+        this.filterType = vacuumCleanerBuilder.filterType;
+        this.bagType = vacuumCleanerBuilder.bagType;
+        this.wandType = vacuumCleanerBuilder.wandType;
+        this.motorSpeedRegulation = vacuumCleanerBuilder.motorSpeedRegulation;
+        this.cleaningWidth = vacuumCleanerBuilder.cleaningWidth;
     }
 
     public int getPowerConsumption() {
@@ -80,5 +90,30 @@ public class VacuumCleaner extends Appliance {
         return "Vacuum cleaner \t power consumption: " + powerConsumption + "\tfilter type: " + filterType +
                 "\tbag type: " + bagType + "\twand type: " + wandType + "\tmotor speed regulation: " +
                 motorSpeedRegulation + "\tcleaning width: " + cleaningWidth + "\t price- " + getPrice();
+    }
+
+    public static class VacuumCleanerBuilder {
+        public int powerConsumption;
+        public String filterType;
+        public String bagType;
+        public String wandType;
+        public int motorSpeedRegulation;
+        public int cleaningWidth;
+        public double price;
+
+        public VacuumCleanerBuilder(String[] allDescription) {
+            this.powerConsumption = Integer.parseInt(allDescription[1]);
+            this.filterType = allDescription[3];
+            this.bagType = allDescription[5];
+            this.wandType = allDescription[7];
+            this.motorSpeedRegulation = Integer.parseInt(allDescription[9]);
+            this.cleaningWidth = Integer.parseInt(allDescription[11]);
+            this.price = Double.parseDouble(allDescription[13]);
+        }
+
+        public VacuumCleaner build() {
+            return new VacuumCleaner(this);
+        }
+
     }
 }

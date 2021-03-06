@@ -27,6 +27,16 @@ public class Refrigerator extends Appliance {
 
     }
 
+    public Refrigerator(RefrigeratorBuilder refrigeratorBuilder) {
+        super(refrigeratorBuilder.price);
+        this.powerConsumption = refrigeratorBuilder.powerConsumption;
+        this.weight = refrigeratorBuilder.weight;
+        this.height = refrigeratorBuilder.height;
+        this.width = refrigeratorBuilder.width;
+        this.freezerCapacity = refrigeratorBuilder.freezerCapacity;
+        this.overallCapacity = refrigeratorBuilder.overallCapacity;
+    }
+
     public int getPowerConsumption() {
         return powerConsumption;
     }
@@ -83,5 +93,29 @@ public class Refrigerator extends Appliance {
                 "\tweight: " + weight + "\tfreezer capacity: " + freezerCapacity +
                 "\toverall capacity: " + overallCapacity + "\theight: " + height +
                 "\twidth: " + width + "\tprice: " + getPrice();
+    }
+
+    public static class RefrigeratorBuilder {
+        public double freezerCapacity;
+        public double overallCapacity;
+        public double width;
+        public double height;
+        public double weight;
+        public int powerConsumption;
+        public double price;
+
+        public RefrigeratorBuilder(String[] allDescription) {
+            this.powerConsumption = Integer.parseInt(allDescription[1]);
+            this.weight = Double.parseDouble(allDescription[3]);
+            this.freezerCapacity = Double.parseDouble(allDescription[5]);
+            this.overallCapacity = Double.parseDouble(allDescription[7]);
+            this.width = Double.parseDouble(allDescription[9]);
+            this.height = Double.parseDouble(allDescription[11]);
+            this.price = Double.parseDouble(allDescription[13]);
+        }
+
+        public Refrigerator build() {
+            return new Refrigerator(this);
+        }
     }
 }

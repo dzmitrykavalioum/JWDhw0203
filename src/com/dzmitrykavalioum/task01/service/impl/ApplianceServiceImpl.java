@@ -7,10 +7,12 @@ import com.dzmitrykavalioum.task01.entity.criteria.Criteria;
 import com.dzmitrykavalioum.task01.service.ApplianceService;
 import com.dzmitrykavalioum.task01.service.validation.Validator;
 
+import java.io.IOException;
+
 public class ApplianceServiceImpl implements ApplianceService{
 
 	@Override
-	public Appliance find(Criteria criteria) {
+	public Appliance find(Criteria criteria) throws IOException {
 		if (!Validator.criteriaValidator(criteria)) {
 			return null;
 		}
@@ -19,12 +21,9 @@ public class ApplianceServiceImpl implements ApplianceService{
 		ApplianceDAO applianceDAO = factory.getApplianceDAO();
 		
 		Appliance appliance = applianceDAO.find(criteria);
-		
-		// you may add your own code here
-		
+
 		return appliance;
 	}
 
 }
 
-//you may add your own new classes

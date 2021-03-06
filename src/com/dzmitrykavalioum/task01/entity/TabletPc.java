@@ -1,8 +1,6 @@
 package com.dzmitrykavalioum.task01.entity;
 
-import java.io.Serializable;
-
-public class TabletPC extends Appliance {
+public class TabletPc extends Appliance {
     private int batteryCapacity;
     private double displayInches;
     private int memoryRom;
@@ -10,11 +8,11 @@ public class TabletPC extends Appliance {
     private String color;
 
 
-    public TabletPC() {
+    public TabletPc() {
 
     }
 
-    public TabletPC(int batteryCapacity, double displayInches, int memoryRom, int flashMemoryCapacity,
+    public TabletPc(int batteryCapacity, double displayInches, int memoryRom, int flashMemoryCapacity,
                     String color, double price) {
         super(price);
         this.batteryCapacity = batteryCapacity;
@@ -23,6 +21,15 @@ public class TabletPC extends Appliance {
         this.flashMemoryCapacity = flashMemoryCapacity;
         this.color = color;
 
+    }
+
+    public TabletPc(TabletPcBuilder tabletPcBuilder) {
+        super(tabletPcBuilder.price);
+        this.batteryCapacity = tabletPcBuilder.batteryCapacity;
+        this.displayInches = tabletPcBuilder.displayInches;
+        this.memoryRom = tabletPcBuilder.memoryRom;
+        this.flashMemoryCapacity = tabletPcBuilder.flashMemoryCapacity;
+        this.color = tabletPcBuilder.color;
     }
 
     public int getBatteryCapacity() {
@@ -72,4 +79,30 @@ public class TabletPC extends Appliance {
                 "\tmemory rom: " + memoryRom + "\tflash memory capacity: " + flashMemoryCapacity +
                 "\tcolor: " + color + "\tprice: " + getPrice();
     }
+
+    public static class TabletPcBuilder {
+
+        public int flashMemoryCapacity;
+        public String color;
+        public int batteryCapacity;
+        public double displayInches;
+        public int memoryRom;
+        public double price;
+
+
+
+        public TabletPcBuilder(String[] allDescription) {
+            this.batteryCapacity = Integer.parseInt(allDescription[1]);
+            this.displayInches = Double.parseDouble(allDescription[3]);
+            this.memoryRom = Integer.parseInt(allDescription[5]);
+            this.flashMemoryCapacity = Integer.parseInt(allDescription[7]);
+            this.color = allDescription[9];
+            this.price = Double.parseDouble(allDescription[11]);
+        }
+
+        public TabletPc build(){
+            return new TabletPc(this);
+        }
+    }
+
 }

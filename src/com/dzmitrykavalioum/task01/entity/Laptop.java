@@ -1,6 +1,6 @@
 package com.dzmitrykavalioum.task01.entity;
 
-public class Laptop extends Appliance{
+public class Laptop extends Appliance {
 
     private double batteryCapacity;
     private String os;
@@ -72,15 +72,11 @@ public class Laptop extends Appliance{
     }
 
 
-
-
-
-
     @Override
     public String toString() {
-        return "Laptop "+ "\tbattery capacity: "+ batteryCapacity +
+        return "Laptop " + "\tbattery capacity: " + batteryCapacity +
                 "\tOS: " + os + "\tmemory rom: " + memoryRom +
-                "\tsystem memory: " + systemMemory + "\tcpu: "+ cpu +
-                "\tdisplay inches: " + displayInches + "\tprice: "+ getPrice();
+                "\tsystem memory: " + systemMemory + "\tcpu: " + cpu +
+                "\tdisplay inches: " + displayInches + "\tprice: " + getPrice();
     }
 }

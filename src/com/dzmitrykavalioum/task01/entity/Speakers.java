@@ -1,6 +1,6 @@
 package com.dzmitrykavalioum.task01.entity;
 
-public class Speakers extends Appliance{
+public class Speakers extends Appliance {
     private int powerConsumption;
     private int numberOfSpeakers;
     private String frequencyRange;
@@ -54,10 +54,9 @@ public class Speakers extends Appliance{
     }
 
 
-
-
     @Override
     public String toString() {
         return "Speakers \t power consuption: " + powerConsumption + "\tnumber of speakers: " + numberOfSpeakers +
                 "\tfrequenct range: " + frequencyRange + "\tcord length" + cordLength + "\tprice: " + getPrice();
-    }}
+    }
+}

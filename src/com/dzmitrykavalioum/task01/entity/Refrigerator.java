@@ -77,7 +77,6 @@ public class Refrigerator extends Appliance {
     }
 
 
-
     @Override
     public String toString() {
         return "Refrigerator \tpower consuption: " + powerConsumption +

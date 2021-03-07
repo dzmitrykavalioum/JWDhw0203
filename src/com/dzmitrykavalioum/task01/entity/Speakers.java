@@ -77,12 +77,12 @@ public class Speakers extends Appliance {
         public int cordLength;
         public double price;
 
-        public SpeakersBuilder(String[] allDescription) {
-            this.powerConsumption = Integer.parseInt(allDescription[1]);
-            this.numberOfSpeakers = Integer.parseInt(allDescription[3]);
-            this.frequencyRange = allDescription[5];
-            this.cordLength = Integer.parseInt(allDescription[7]);
-            this.price = Double.parseDouble(allDescription[9]);
+        public SpeakersBuilder(String[] arrProperties) {
+            this.powerConsumption = Integer.parseInt(arrProperties[1]);
+            this.numberOfSpeakers = Integer.parseInt(arrProperties[3]);
+            this.frequencyRange = arrProperties[5];
+            this.cordLength = Integer.parseInt(arrProperties[7]);
+            this.price = Double.parseDouble(arrProperties[9]);
         }
 
         public Speakers build() {

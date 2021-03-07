@@ -91,13 +91,13 @@ public class TabletPc extends Appliance {
 
 
 
-        public TabletPcBuilder(String[] allDescription) {
-            this.batteryCapacity = Integer.parseInt(allDescription[1]);
-            this.displayInches = Double.parseDouble(allDescription[3]);
-            this.memoryRom = Integer.parseInt(allDescription[5]);
-            this.flashMemoryCapacity = Integer.parseInt(allDescription[7]);
-            this.color = allDescription[9];
-            this.price = Double.parseDouble(allDescription[11]);
+        public TabletPcBuilder(String[] arrProperties) {
+            this.batteryCapacity = Integer.parseInt(arrProperties[1]);
+            this.displayInches = Double.parseDouble(arrProperties[3]);
+            this.memoryRom = Integer.parseInt(arrProperties[5]);
+            this.flashMemoryCapacity = Integer.parseInt(arrProperties[7]);
+            this.color = arrProperties[9];
+            this.price = Double.parseDouble(arrProperties[11]);
         }
 
         public TabletPc build(){

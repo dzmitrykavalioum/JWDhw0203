@@ -88,14 +88,14 @@ public class Laptop extends Appliance {
         public int memoryROM;
         public double price;
 
-        public LaptopBuilder(String[] allDescription) {
-            this.batteryCapacity = Double.parseDouble(allDescription[1]);
-            this.os = allDescription[3];
-            this.memoryROM = Integer.parseInt(allDescription[5]);
-            this.systemMemory = Integer.parseInt(allDescription[7]);
-            this.CPU = Double.parseDouble(allDescription[9]);
-            this.displayInches = Double.parseDouble(allDescription[11]);
-            this.price = Double.parseDouble(allDescription[13]);
+        public LaptopBuilder(String[] arrProperties) {
+            this.batteryCapacity = Double.parseDouble(arrProperties[1]);
+            this.os = arrProperties[3];
+            this.memoryROM = Integer.parseInt(arrProperties[5]);
+            this.systemMemory = Integer.parseInt(arrProperties[7]);
+            this.CPU = Double.parseDouble(arrProperties[9]);
+            this.displayInches = Double.parseDouble(arrProperties[11]);
+            this.price = Double.parseDouble(arrProperties[13]);
         }
 
         public Laptop build() {

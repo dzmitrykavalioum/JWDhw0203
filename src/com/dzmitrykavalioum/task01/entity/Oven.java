@@ -104,14 +104,14 @@ public class Oven extends Appliance {
         public int powerConsumption;
         public double price;
 
-        public OvenBuilder(String[] allDescription) {
-            this.powerConsumption = Integer.parseInt(allDescription[1]);
-            this.weight = Double.parseDouble(allDescription[3]);
-            this.capacity = Double.parseDouble(allDescription[5]);
-            this.depth = Double.parseDouble(allDescription[7]);
-            this.height = Double.parseDouble(allDescription[9]);
-            this.width = Double.parseDouble(allDescription[11]);
-            this.price = Double.parseDouble(allDescription[13]);
+        public OvenBuilder(String[] arrProperties) {
+            this.powerConsumption = Integer.parseInt(arrProperties[1]);
+            this.weight = Double.parseDouble(arrProperties[3]);
+            this.capacity = Double.parseDouble(arrProperties[5]);
+            this.depth = Double.parseDouble(arrProperties[7]);
+            this.height = Double.parseDouble(arrProperties[9]);
+            this.width = Double.parseDouble(arrProperties[11]);
+            this.price = Double.parseDouble(arrProperties[13]);
         }
 
         public Oven build() {

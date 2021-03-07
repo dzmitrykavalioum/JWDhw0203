@@ -101,14 +101,14 @@ public class VacuumCleaner extends Appliance {
         public int cleaningWidth;
         public double price;
 
-        public VacuumCleanerBuilder(String[] allDescription) {
-            this.powerConsumption = Integer.parseInt(allDescription[1]);
-            this.filterType = allDescription[3];
-            this.bagType = allDescription[5];
-            this.wandType = allDescription[7];
-            this.motorSpeedRegulation = Integer.parseInt(allDescription[9]);
-            this.cleaningWidth = Integer.parseInt(allDescription[11]);
-            this.price = Double.parseDouble(allDescription[13]);
+        public VacuumCleanerBuilder(String[] arrProperties) {
+            this.powerConsumption = Integer.parseInt(arrProperties[1]);
+            this.filterType = arrProperties[3];
+            this.bagType = arrProperties[5];
+            this.wandType = arrProperties[7];
+            this.motorSpeedRegulation = Integer.parseInt(arrProperties[9]);
+            this.cleaningWidth = Integer.parseInt(arrProperties[11]);
+            this.price = Double.parseDouble(arrProperties[13]);
         }
 
         public VacuumCleaner build() {
